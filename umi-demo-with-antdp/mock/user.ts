@@ -1,15 +1,3 @@
-# README
-
-`@umijs/max` 模板项目，更多功能参考 [Umi Max 简介](https://umijs.org/docs/max/introduce)
-
-
-## Mock数据
-### 1. 创建 Mock 文件
-Umi 默认从 mock/ 目录下读取 mock 文件。
-
-示例：mock/user.ts 或 mock/user.js
-```ts
-// mock/user.ts
 export default {
   'GET /api/user/info': {
     name: '张三',
@@ -18,7 +6,7 @@ export default {
     role: 'admin',
   },
 
-  'POST /api/user/login': (req, res) => {
+  'POST /api/user/login': (req: any, res: any) => {
     const { username } = req.body;
     res.status(200).json({
       code: 0,
@@ -27,7 +15,7 @@ export default {
     });
   },
 
-  'GET /api/user/list': (req, res) => {
+  'GET /api/user/list': (req: any, res: any) => {
     const list = Array(10)
       .fill(1)
       .map((_, i) => ({
@@ -39,7 +27,7 @@ export default {
   },
 
   // 模拟延迟加载（如网络慢）
-  'GET /api/user/slow': (req, res) => {
+  'GET /api/user/slow': (req: any, res: any) => {
     setTimeout(() => {
       res.status(200).json({ code: 0, data: '响应延迟 2s' });
     }, 2000);
@@ -50,4 +38,3 @@ export default {
     res.status(500).json({ code: -1, message: '服务器错误' });
   },
 };
-```
